@@ -3,6 +3,7 @@ package Task2Interpolation.Methods;
 
 import Task2Interpolation.Polynomial.Polynomial;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,28 +13,12 @@ public class Newton extends MethodInterpolation {
     List<List<Polynomial>> polyElems;
     public Newton(List<List<Double>> fTable, double x, int n) {
         super(fTable, x, n);
-        polyElems = new ArrayList<>();
         name = "Newton";
         pointsConstructed = 0;
+        polyElems = new ArrayList<>();
         calculatePolynomial();
+        System.out.println(polyElems);
     }
-//    void calculatePolynomial(){
-//        for (int i = pointsConstructed; i < n; ++i) {
-//            result = result.plus(calcElementInSum(i));
-//            ++pointsConstructed;
-//        }
-//    }
-//
-//    private Polynomial calcElementInSum(int index){
-//        if (index == 0)
-//            return new Polynomial(new double[]{fTable.get(index).get(1)});
-//        Polynomial result = new Polynomial(new double[]{calcDividedDifference(index)});
-//        for (int i = 0; i < index; i++) {
-//            Polynomial temp = new Polynomial(new double[]{-fTable.get(i).get(0), 1});
-//            result = result.multiply(temp);
-//        }
-//
-//        return result;
     private List<Polynomial> calcElementInSum(int index){
         if (index == 0)
             return new ArrayList<>(Collections.singleton(new Polynomial(new double[]{fTable.get(index).get(1)})));
@@ -42,15 +27,14 @@ public class Newton extends MethodInterpolation {
             Polynomial temp = new Polynomial(new double[]{-fTable.get(i).get(0), 1});
             result.add(temp);
         }
-
         return result;
     }
     void calculatePolynomial(){
         for (int i = pointsConstructed; i < n; ++i) {
             polyElems.add(calcElementInSum(i));
-            ++pointsConstructed;
         }
     }
+
 
     @Override
     public double eval(double x) {
@@ -62,8 +46,8 @@ public class Newton extends MethodInterpolation {
             }
             res += temp;
         }
-        return res;
-    }
+        return res;}
+
 
     private double calcDividedDifference(int index){
         double result = 0;
