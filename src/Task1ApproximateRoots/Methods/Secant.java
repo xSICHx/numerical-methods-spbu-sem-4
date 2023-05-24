@@ -27,11 +27,7 @@ public class Secant extends Newton{
 
         int signFirstDer = getFirstDerSign(leftBound);
         int signSecondDer = getSecondDerSign(leftBound);
-        if (!checkConvergence(x_k_prev, signFirstDer, signSecondDer) ||
-                !checkConvergence(x_k, signFirstDer, signSecondDer)){
-            System.out.println("Secant method can not find all roots. Try to choose a smaller partition");
-            return null;
-        }
+
 
         double f_k_prev = func.calculate(x_k_prev);
         double f_k = func.calculate(x_k);
@@ -46,15 +42,11 @@ public class Secant extends Newton{
 
             x_k_next = x_k - f_k/(f_k - f_k_prev)*(x_k-x_k_prev);
             f_k_next = func.calculate(x_k_next);
-            if (!checkConvergence(x_k_next, signFirstDer, signSecondDer)){
-                System.out.println("Secant method can not find all roots. Try to choose a bigger partition");
-                return null;
-            }
+
             numberOfSteps++;
         }
 
         return new Root(x_k_next, abs(func.calculate(x_k_next)), numberOfSteps,
                 "initial approximation to the root = " + x0);
     }
-
 }

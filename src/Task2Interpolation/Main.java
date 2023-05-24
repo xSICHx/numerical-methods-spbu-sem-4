@@ -2,8 +2,6 @@ package Task2Interpolation;
 
 import org.mariuszgromada.math.mxparser.License;
 
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] s){
         License.iConfirmNonCommercialUse("xSICHx");

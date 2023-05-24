@@ -1,6 +1,5 @@
 package Task3_1ReverseInterpolation.Methods;
 
-import Task2Interpolation.Methods.LagrangeInterpolation;
 import Task2Interpolation.Methods.Newton;
 
 import java.util.List;

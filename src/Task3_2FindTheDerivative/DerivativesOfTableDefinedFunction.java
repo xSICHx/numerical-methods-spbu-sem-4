@@ -3,8 +3,6 @@ package Task3_2FindTheDerivative;
 import dnl.utils.text.table.TextTable;
 import org.mariuszgromada.math.mxparser.Function;
 
-import javax.swing.table.TableModel;
-
 import static java.lang.Math.abs;
 
 public class DerivativesOfTableDefinedFunction {
@@ -75,15 +73,13 @@ public class DerivativesOfTableDefinedFunction {
         }
         if (i == 0){
             if (m >= 2)
-                return (-2*derivativeTable[i][2] + 5*derivativeTable[i+1][2] - 4*derivativeTable[i+2][2] + derivativeTable[i+3][2])/(h*h);
+                return (-2*derivativeTable[i][1] + 5*derivativeTable[i+1][1] - 4*derivativeTable[i+2][1] + derivativeTable[i+3][1])/(h*h);
             else return null;
         } else if (i == m) {
             if (m >= 2)
-                return (2*derivativeTable[i][2] - 5*derivativeTable[i-1][2] + 4*derivativeTable[i-2][2] - derivativeTable[i-3][2])/(h*h);
+                return (2*derivativeTable[i][1] - 5*derivativeTable[i-1][1] + 4*derivativeTable[i-2][1] - derivativeTable[i-3][1])/(h*h);
             else return null;
         } else
-            return (derivativeTable[i+1][2] - 2*derivativeTable[i][2] + derivativeTable[i-1][2])/(h*h);
+            return (derivativeTable[i+1][1] - 2*derivativeTable[i][1] + derivativeTable[i-1][1])/(h*h);
     }
-
-
 }
