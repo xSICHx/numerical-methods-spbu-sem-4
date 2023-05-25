@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 public class AdamsODE extends Method{
 
     HashMap<String, Double> divDiff;
-    double[][] AdamsTable;
 
     public AdamsODE(int N, double h, double y_0, double x_0, String dy, double[][] initTable, int m) {
         super(N, h, y_0, x_0, dy);
@@ -16,10 +15,10 @@ public class AdamsODE extends Method{
             divDiff.put("x" + i, initTable[i][0]);
             divDiff.put("y" + i, initTable[i][1]);
         }
-        AdamsTable = new double[N+2+1][2];
+        methodTable = new double[N+2+1][2];
         for (int i = 0; i < N+2+1; i++) {
-            AdamsTable[i][0] = getElemInMap("x", i);
-            AdamsTable[i][1] = getElemInMap("y", i);
+            methodTable[i][0] = getElemInMap("x", i);
+            methodTable[i][1] = getElemInMap("y", i);
         }
 
     }
@@ -56,9 +55,5 @@ public class AdamsODE extends Method{
             );
         }
         return divDiff.get(type+index);
-    }
-
-    public double[][] getAdamsTable() {
-        return AdamsTable;
     }
 }
