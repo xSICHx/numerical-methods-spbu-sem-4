@@ -17,6 +17,9 @@ public class Gauss {
     private List<String> poly;
     private List<Double> nodes;
     private List<Double> coefs;
+    private Function trueIntegral;
+    private double absError;
+    private double res;
     public Gauss(double a, double b, int N, double epsilon, String f){
         this.a = a;
         this.b = b;
@@ -27,6 +30,11 @@ public class Gauss {
         fillPoly();
         coefs = new ArrayList<>();
         fillNodes();
+    }
+    public Gauss(double a, double b, int N, double epsilon, String f, String trueIntegral){
+        this(a, b, N, epsilon, f);
+        this.trueIntegral = new Function(trueIntegral);
+        this.absError = Math.abs(this.trueIntegral.calculate(b) - this.trueIntegral.calculate(a) - res);
     }
 
     private void fillPoly(){
@@ -63,7 +71,22 @@ public class Gauss {
             coefs.set(i, (b-a)/2*coefs.get(i));
             sm += coefs.get(i)*this.f.calculate(nodes.get(i));
         }
+        res = sm;
+    }
 
-        System.out.println(sm);
+    public double getAbsError() {
+        return absError;
+    }
+
+    public double getRes() {
+        return res;
+    }
+
+    public List<Double> getNodes() {
+        return nodes;
+    }
+
+    public List<Double> getCoefs() {
+        return coefs;
     }
 }

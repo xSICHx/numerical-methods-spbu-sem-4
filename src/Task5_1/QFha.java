@@ -27,6 +27,18 @@ public class QFha {
     private double simpleErr;
     private double simpleSm;
 
+    public Function getTrueIntegral() {
+        return trueIntegral;
+    }
+
+    public double getAbs_err() {
+        return abs_err;
+    }
+
+    public double getSm() {
+        return sm;
+    }
+
     public QFha(double a, double b, int N, String rho, String f, String trueIntegral){
         this.trueIntegral = new Function(trueIntegral);
         this.a = a;
@@ -202,6 +214,14 @@ public class QFha {
 
     public double getA() {
         return a;
+    }
+
+    public RealMatrix getNodes() {
+        return nodes;
+    }
+
+    public RealMatrix getMoments() {
+        return moments;
     }
 
     public double getB() {

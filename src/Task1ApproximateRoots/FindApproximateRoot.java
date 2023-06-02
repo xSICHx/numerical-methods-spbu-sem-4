@@ -117,11 +117,12 @@ public class FindApproximateRoot {
         calculateNumberOfRootsNoPrints();
 
         //finding roots with different methods
+        Function fnc = new Function(function);
         MethodFindRoot solvingMethod = switch (method) {
-            case ("newton") -> new Newton(func, inaccuracy, solutionSegments);
-            case ("modNewton") -> new ModifiedNewton(func, inaccuracy, solutionSegments);
-            case ("secant") -> new Secant(func, inaccuracy, solutionSegments);
-            default -> new Bisections(func, inaccuracy, solutionSegments);
+            case ("newton") -> new Newton(fnc, inaccuracy, solutionSegments);
+            case ("modNewton") -> new ModifiedNewton(fnc, inaccuracy, solutionSegments);
+            case ("secant") -> new Secant(fnc, inaccuracy, solutionSegments);
+            default -> new Bisections(fnc, inaccuracy, solutionSegments);
         };
         solvingMethod.start();
         try{

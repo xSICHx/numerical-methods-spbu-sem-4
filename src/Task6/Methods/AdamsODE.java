@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+//Замена на интерполяционный многочлен, экстраполяционный многочлен, должны быть равноостоящие ущлы
 public class AdamsODE extends Method{
 
     HashMap<String, Double> divDiff;

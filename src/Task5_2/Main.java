@@ -1,17 +1,25 @@
 package Task5_2;
 
-import Task5_2.QF_Methods.Gauss;
-import Task5_2.QF_Methods.Meller;
 import org.mariuszgromada.math.mxparser.License;
+
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args){
         License.iConfirmNonCommercialUse("xSICHx");
         formalities();
-        Gauss gauss = new Gauss(0, Math.PI/4, 11, 1e-12, "f(x) = cos(x^2)");
-        Meller meller = new Meller(10, "f(x) = exp(x)* sin(x^2)");
+        QFMellerGaussUse qfMellerGaussUse = new QFMellerGaussUse(3, 6, 7,  1e-12);
+    }
 
+    public static void myParameters(){
+        System.out.println("Введите N1, N2, N3, epsilon");
+        Scanner scanner = new Scanner(System.in);
+        int N1 = scanner.nextInt();
+        int N2 = scanner.nextInt();
+        int N3 = scanner.nextInt();
+        double epsilon = scanner.nextDouble();
+        QFMellerGaussUse qfMellerGaussUse = new QFMellerGaussUse(N1, N2, N3, epsilon);
     }
 
 
